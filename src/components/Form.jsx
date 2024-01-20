@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ThankYou from './ThankYou';
+import InputMask from 'react-input-mask'
 
 function Form(props) {
     const { formData, onInputChange, onSubmit } = props
@@ -24,10 +25,10 @@ function Form(props) {
             newErrors.holderName = 'Enter Holder Name'
             valid = false
         }
-        else if (formData.cardNumber.trim() === '' || !/^\d+$/.test(formData.cardNumber)) {
-            newErrors.cardNumber = 'Wrong format, numbers only'
-            valid = false
-        }
+        // else if (formData.cardNumber.trim() === '' || !/^\d+$/.test(formData.cardNumber)) {
+        //     newErrors.cardNumber = 'Wrong format, numbers only'
+        //     valid = false
+        // }
         else if (formData.month.trim() === '' || formData.year.trim() === '') {
             newErrors.year = 'Can\'t be blank'
             valid = false
@@ -87,13 +88,16 @@ function Form(props) {
                                 </div>
                                 <div className='number-inputs'>
                                     <label htmlFor='card-number'>Card Number</label>
-                                    <input
-                                        type='text'
-                                        id='card-number'
-                                        placeholder='e.g. 1234 5678 9123 0000'
-                                        name='cardNumber'
+                                    <InputMask
                                         onChange={onInputChange}
-                                    ></input>
+                                        mask='9999 9999 9999 9999'
+                                        maskChar=''
+                                        className='firstinp'
+                                        type='text'
+                                        name='number'
+                                        placeholder='e.g 1234 5678 9123'
+                                        required
+                                    />
                                     <p className='error-text'>{showErrors && errors.cardNumber}</p>
                                 </div>
                                 <div className='date'>
