@@ -25,10 +25,6 @@ function Form(props) {
             newErrors.holderName = 'Enter Holder Name'
             valid = false
         }
-        // else if (formData.cardNumber.trim() === '' || !/^\d+$/.test(formData.cardNumber)) {
-        //     newErrors.cardNumber = 'Wrong format, numbers only'
-        //     valid = false
-        // }
         else if (formData.month.trim() === '' || formData.year.trim() === '') {
             newErrors.year = 'Can\'t be blank'
             valid = false
